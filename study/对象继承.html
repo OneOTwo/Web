@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>对象继承</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+    function object(o){
+        var F=function(o){};
+        F.prototype=o;
+        return new F();
+    }
+    var Person={
+        name:"ypm",
+        color:["red","blue","green"]
+    };
+     var anotherPerson = object(Person);
+     anotherPerson.color.push("ppp");
+     var anotherPerson1=object(Person);
+     alert(anotherPerson1.color) ;
+    </script>
+</html>

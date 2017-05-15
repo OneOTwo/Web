@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>模块模式</title>
+</head>
+<body>
+
+</body>
+<script>
+  //如果必须创建一个对象并以某些数据对其进行初始化，同时还要公开一些访问这些私有数据的方法，就可以使用下面这种模式
+    var application=function(){
+        var components=new Array();
+        components.push(new BaseComponent());
+        return {
+            getComponentCount:function(){
+                return components.length;
+            },
+            registerComponent:function(component){
+                if(typeof component =="object"){
+                    components.push(component);
+                }
+            }
+        }
+    }();
+
+    /*增强的模块模式*/
+//如果前面模块的模式例子中的application对象必须是BaseComponent的实例子，可以使用如下代码
+    var application=function(){
+      var components=new Array();
+       components.push(new BaseComponent());
+      var app=new BaseComponent();
+      app.getComponentCount=function(){
+          return components.length;
+      };
+      app.registerComponent=function(){
+          if(typeof component =="object"){
+              components.push(component);
+          }
+      }
+        return app;
+  }();
+
+</script>
+</html>

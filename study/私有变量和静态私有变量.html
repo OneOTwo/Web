@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>私有变量和静态私有变量</title>
+</head>
+<body>
+
+</body>
+<script>
+    //严格来讲javascript没有私有成员的概念，所有对象属性都是共有的。不过倒是有私有变量的概念
+    //任何在函数内部定义的变量都可以认为是私有变量，因为不能在函数的外部访问这些变量。
+    //私有变量包括函数的参数，局部变量和在函数内部定义的其他函数
+    function add(num1,num2){
+        var sum=num1+num2;
+        return sum;
+    }
+    //如果在这个函数的内部创建一个闭包，那么闭包通过自己的作用域练也可以访问这些变量
+    //有两种在对象上创建特权方法的方式，第一种是在构造函数中定义特权方法，如下
+    function MyObject(){
+        var privateVariable=10;
+        function privateFunction(){
+            return false;
+        }
+        this.publicMethod=function(){
+            privateVariable++;
+            return privateFunction();
+        };
+    }
+    var myobject=new MyObject();
+    alert(myobject.publicMethod());
+    //静态私有变量，通过在私有作用域中定义私有变量和函数，同样也可以创建特权方法，模式如下；
+    (function(){
+        var name="";
+        Person =function(value){
+            name=value;
+        }
+        Person.prototype.getName=function(){
+            return name;
+        };
+        Person.prototype.setName=function(value){
+            name= value;
+        };
+    })();
+</script>
+</html>

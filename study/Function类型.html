@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function类型</title>
+</head>
+<body>
+
+</body>
+<script>
+//函数实际上是对象，每个函数实际上视Function类型的实例。
+//用Function构造函数定义函数
+//由于函数名仅仅是指向函数的指针
+    var sum=new Function("num1","num2","return num1-num2");
+	function sum(num1,num2){
+		return	num1+num2;	
+	}
+	alert(sum(10,10));
+	var anotherSum =sum;
+	alert(anotherSum(10,10));
+	sum=null;
+	alert(anotherSum(10,10));
+</script>
+</html>

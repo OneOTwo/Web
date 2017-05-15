@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>模仿块级作用域</title>
+</head>
+<body>
+</body>
+<script>
+//javascript没有块级作用域的概念。在块语句中定义的变量，实际上是在包含函数中而非语句中创建的
+function outputNumbers(count){
+    for(var i=0;i<count;i++){
+        alert(i);
+    }
+    alert(i);
+}
+outputNumbers(10);
+function outputNumbers1(count){
+    (function(){
+        for (var i=0;i<count;i++){
+            alert(i)
+        }
+    })();
+    alert(i);
+}
+outputNumbers1(10);
+</script>
+</html>
